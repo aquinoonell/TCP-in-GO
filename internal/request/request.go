@@ -1,18 +1,21 @@
 package request
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+)
 
 type Request struct {
 	RequestLine RequestLine
 }
 
 type RequestLine struct {
-	HttpVersion string
+	HttpVersion   string
 	RequestTarget string
-	Method string
+	Method        string
 }
 
 var ERROR_BAD_START_LINE = fmt.Errorf("ERROR_BAD_START_LINE")
 
-func RequestFromReader (reader io.Reader) (*Request, error) {
+func RequestFromReader(reader io.Reader) (*Request, error) {
 }
