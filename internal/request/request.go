@@ -29,8 +29,14 @@ func parseRequestLine(b string) (*Request, string, error) {
 	restOfMsg := b[idx+len(SEPARATOR):]
 
 	parts := strings.Split(startLine, " ")
+	if len(parts)!= 3 {
+		return nil, restOfMsg, ERROR_BAD_START_LINE
+	}
 
 	return &RequestLine{
+		Method: parts[0],
+		RequestTarget: parts[1],
+		HttpVersion: parts[2],
 	}, restOfMsg, nil
 }
 
