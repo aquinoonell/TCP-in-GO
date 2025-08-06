@@ -43,7 +43,7 @@ func parseRequestLine(b string) (*RequestLine, string, error) {
 	rl := &RequestLine{
 			Method:        parts[0],
 			RequestTarget: parts[1],
-			HttpVersion:   parts[2],
+			HttpVersion:   httpParts[1],
 	}
 
 	return rl, restOfMsg, nil
