@@ -21,7 +21,7 @@ var ERROR_MALFORMED_REQUEST_LINE = fmt.Errorf("Malformed request-line")
 var ERROR_UNSUPPORTED_HTTP_VERSION = fmt.Errorf("Unsupported Http version")
 var SEPARATOR = "\r\n"
 
-func parseRequestLine(b string) (*Request, string, error) {
+func parseRequestLine(b string) (*RequestLine, string, error) {
 	idx := strings.Index(b, SEPARATOR)
 	if idx == -1 {
 		return nil, b, nil
@@ -41,9 +41,9 @@ func parseRequestLine(b string) (*Request, string, error) {
 	}
 
 	rl := &RequestLine{
-		Method:        parts[0],
-		RequestTarget: parts[1],
-		HttpVersion:   parts[2],
+			Method:        parts[0],
+			RequestTarget: parts[1],
+			HttpVersion:   parts[2],
 	}
 
 	return rl, restOfMsg, nil
