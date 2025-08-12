@@ -40,7 +40,7 @@ func parseRequestLine(b string) (*RequestLine, string, error) {
 		return nil, restOfMsg, ERROR_MALFORMED_REQUEST_LINE
 	}
 
-	rl := &RequestLine{
+	rl = &RequestLine{
 			Method:        parts[0],
 			RequestTarget: parts[1],
 			HttpVersion:   httpParts[1],
