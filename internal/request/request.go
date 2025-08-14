@@ -37,7 +37,7 @@ var ERROR_REQUEST_IN_ERROR_STATE = fmt.Errorf("Request in Error State")
 
 var SEPARATOR = []byte("\r\n")
 
-func parseRequestLine(b []byte) (*RequestLine, string, error) {
+func parseRequestLine(b []byte) (*RequestLine, int, error) {
 	idx := bytes.Index(b, SEPARATOR)
 	if idx == -1 {
 		return nil, 0, nil
