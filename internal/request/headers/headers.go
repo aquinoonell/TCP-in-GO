@@ -30,4 +30,23 @@ func (h Headers) Parse(data []byte) (n int, done bool, err error) {
 	if key != strings.TrimRight(key, " ") {
 		return 0, false, fmt.Errorf("Invalid header name: %s", key)
 	}
+
+	value := bytes.TrimSpace(parts[1])
+	key = strings.TrimSpace(key)
+	if !validTokens([]byte(key)) {
+		return 0, false, fmt.Errorf("Invalid header token %s", key)
+	}
+	if !validStringName(string(key)) {
+		return 0, false, fmt.Errorf("Invalid header token %s", key)
+	}
+
+
+	func validTokens(data []byte) bool {
+		!todo
+	}
+
+	func validStringName (fieldName string) bool {
+		!todo
+
+	}
 }
